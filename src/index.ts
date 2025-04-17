@@ -48,7 +48,6 @@ ${chalk.bold('👥 Leadership')}
 async function main() {
     const args = process.argv.slice(2);
   
-    // If --full flag is passed
     if (args.includes('--full')) {
       console.clear();
       console.log(gradient.retro(`
@@ -59,7 +58,6 @@ async function main() {
       console.log(chalk.bold.cyanBright('🌐 Portfolio: https://aniketh-deb.vercel.app\n'));
       qrcode.generate('https://aniketh-deb.vercel.app', { small: true });
   
-      // Print all sections
       for (const [title, content] of Object.entries(sections)) {
         console.log(gradient.fruit(`\n🧠 ${title}:\n`));
         console.log(content);
@@ -69,8 +67,6 @@ async function main() {
       console.log(chalk.greenBright('\n👋 Thanks for checking me out!'));
       return;
     }
-  
-    // Regular interactive flow
     console.clear();
     console.log(gradient.retro(`
   ╔═══════════════════════════════════════════════╗
