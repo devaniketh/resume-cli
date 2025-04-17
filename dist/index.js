@@ -1,73 +1,77 @@
 #!/usr/bin/env node 
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const inquirer_1 = __importDefault(require("inquirer"));
+import inquirer from 'inquirer';
+import chalk from 'chalk';
+import gradient from 'gradient-string';
 const sections = {
     Education: `
-🎓 Education
-• SRM Institute of Science and Technology (2023–2027)
-  B.Tech in CSE (AI/ML) – 8.0 CGPA
+${chalk.bold('🎓 Education')}
+• ${chalk.cyan('SRM Institute of Science and Technology')} (2023–2027)
+  B.Tech in CSE (AI/ML) – ${chalk.yellow('8.0 CGPA')}
 • St. Anthony’s Higher Secondary School, Shillong (2021–2023)
-  Class XII – 70%
+  Class XII – ${chalk.yellow('70%')}
   `,
     Experience: `
-💼 Experience
-• DevKit – Full-Stack Developer (Jan 2025 – Present)
+${chalk.bold('💼 Experience')}
+• ${chalk.green('DevKit')} – Full-Stack Developer (${chalk.dim('Jan 2025 – Present')})
   – Integrated Grok & OpenRouter APIs
   – Built OCR support & redesigned LLM UI
 
-• LayerEdge – Frontend Dev (Jan 2025 – Feb 2025)
+• ${chalk.green('LayerEdge')} – Frontend Dev (${chalk.dim('Jan 2025 – Feb 2025')})
   – Built UI for Bitcoin-ZK platform
   `,
     Projects: `
-🚀 Projects
+${chalk.bold('🚀 Projects')}
 • Zk-ReUseIt – ZK resale platform using Reclaim SDKs & Polygon zkEVM
 • SecureInsure – Smart contract-based insurance app
 • Defy-Locker – IPFS-based decentralized document locker
 • Solana YieldFarm – SPL staking & reward DApp on Solana
   `,
     Skills: `
-🛠️ Technical Skills
-Languages: TypeScript, JavaScript, C, C++, Python, Solidity
-Web: HTML, CSS, React, Next.js, Node.js, Express, MongoDB, PostgreSQL
-Blockchain: Ethereum, Solana, ZKP, Smart Contracts, Anchor, Web3.js
-Cloud: Docker, AWS
+${chalk.bold('🛠️ Technical Skills')}
+Languages: ${chalk.magentaBright('TypeScript, JavaScript, C, C++, Python, Solidity')}
+Web: ${chalk.magentaBright('React, Next.js, Node.js, Express, MongoDB, PostgreSQL')}
+Blockchain: ${chalk.magentaBright('Ethereum, Solana, ZKP, Smart Contracts, Anchor')}
+Cloud: ${chalk.magentaBright('Docker, AWS')}
   `,
     Leadership: `
-👥 Position of Responsibility
-• Tech Lead @ TPHxSRMIST – Built website & mentored hackathon participants
-• Blockchain Club @ SRM – Project contributor & mentor
+${chalk.bold('👥 Leadership')}
+• ${chalk.blue('Tech Lead @ TPHxSRMIST')} – Built website & mentored hackathon participants
+• ${chalk.blue('Blockchain Club @ SRM')} – Project contributor & mentor
   `
 };
 async function main() {
-    const { section } = await inquirer_1.default.prompt([
+    console.clear();
+    console.log(gradient.atlas(`
+  ╔════════════════════════════════════════╗
+  ║         ANIKETH DEB CLI RESUME        ║
+  ╚════════════════════════════════════════╝
+  `));
+    const { section } = await inquirer.prompt([
         {
             type: 'list',
             name: 'section',
-            message: '👋 What would you like to view from Aniketh\'s resume?',
-            choices: Object.keys(sections).concat('Exit'),
+            message: chalk.yellow("👉 What would you like to view?"),
+            choices: [...Object.keys(sections), 'Exit'],
         },
     ]);
     if (section === 'Exit') {
-        console.log('👋 Bye!');
+        console.log(chalk.greenBright('\n👋 Bye! Stay legendary.'));
         return;
     }
     console.clear();
     console.log(sections[section]);
-    await inquirer_1.default.prompt([
+    const { again } = await inquirer.prompt([
         {
             type: 'confirm',
             name: 'again',
-            message: 'Want to check another section?',
+            message: chalk.cyan('✨ View another section?'),
         },
-    ]).then((res) => {
-        if (res.again)
-            main();
-        else
-            console.log('👋 Bye!');
-    });
+    ]);
+    if (again) {
+        main();
+    }
+    else {
+        console.log(chalk.greenBright('\n👋 Later, hacker.'));
+    }
 }
 main();

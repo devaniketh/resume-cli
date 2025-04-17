@@ -12,14 +12,17 @@
   },
   "author": "Aniketh Deb",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
+    "@types/chalk": "^0.4.31",
     "@types/inquirer": "^9.0.7",
     "@types/node": "^22.14.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "chalk": "^5.4.1",
+    "gradient-string": "^3.0.0",
     "inquirer": "^12.5.2"
   }
 }
