@@ -1,0 +1,21 @@
+{
+  "name": "aniketh-resume-cli",
+  "version": "1.0.0",
+  "description": "Aniketh's resume in the terminal",
+  "main": "dist/index.js",
+  "bin": {
+    "aniketh-resume": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "echo #!/usr/bin/env node>temp.js && type temp.js dist\\index.js > dist\\index.temp.js && move /Y dist\\index.temp.js dist\\index.js && del temp.js"
+  },
+  "author": "Aniketh Deb",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
