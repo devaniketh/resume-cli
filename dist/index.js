@@ -2,6 +2,7 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import gradient from 'gradient-string';
+import qrcode from 'qrcode-terminal';
 const sections = {
     Education: `
 ${chalk.bold('🎓 Education')}
@@ -40,38 +41,52 @@ ${chalk.bold('👥 Leadership')}
   `
 };
 async function main() {
-    console.clear();
-    console.log(gradient.atlas(`
-  ╔════════════════════════════════════════╗
-  ║         ANIKETH DEB CLI RESUME        ║
-  ╚════════════════════════════════════════╝
+    const args = process.argv.slice(2);
+    // If --full flag is passed
+    if (args.includes('--full')) {
+        console.clear();
+        console.log(gradient.retro(`
+  ╔═══════════════════════════════════════════════╗
+  ║          🚀 ANIKETH DEB CLI RESUME           ║
+  ╚═══════════════════════════════════════════════╝
   `));
-    const { section } = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'section',
-            message: chalk.yellow("👉 What would you like to view?"),
-            choices: [...Object.keys(sections), 'Exit'],
-        },
-    ]);
-    if (section === 'Exit') {
-        console.log(chalk.greenBright('\n👋 Bye! Stay legendary.'));
+        console.log(chalk.bold.cyanBright('🌐 Portfolio: https://aniketh-deb.vercel.app\n'));
+        qrcode.generate('https://aniketh-deb.vercel.app', { small: true });
+        // Print all sections
+        for (const [title, content] of Object.entries(sections)) {
+            console.log(gradient.fruit(`\n🧠 ${title}:\n`));
+            console.log(content);
+            console.log(chalk.gray('\n----------------------------------------------\n'));
+        }
+        console.log(chalk.greenBright('\n👋 Thanks for checking me out!'));
         return;
     }
+    // Regular interactive flow
     console.clear();
-    console.log(sections[section]);
-    const { again } = await inquirer.prompt([
-        {
-            type: 'confirm',
-            name: 'again',
-            message: chalk.cyan('✨ View another section?'),
-        },
-    ]);
-    if (again) {
-        main();
-    }
-    else {
-        console.log(chalk.greenBright('\n👋 Later, hacker.'));
+    console.log(gradient.retro(`
+  ╔═══════════════════════════════════════════════╗
+  ║          🚀 ANIKETH DEB CLI RESUME           ║
+  ╚═══════════════════════════════════════════════╝
+  `));
+    console.log(chalk.bold.cyanBright('🌐 Portfolio: https://aniketh-deb.vercel.app\n'));
+    qrcode.generate('https://aniketh-deb.vercel.app', { small: true });
+    while (true) {
+        const { section } = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'section',
+                message: chalk.yellow("👉 What would you like to view?"),
+                choices: [...Object.keys(sections), 'Exit'],
+            },
+        ]);
+        if (section === 'Exit') {
+            console.log(chalk.greenBright('\n👋 Later, hacker. Stay legendary.'));
+            break;
+        }
+        console.clear();
+        console.log(gradient.fruit(`\n🧠 ${section}:\n`));
+        console.log(sections[section]);
+        console.log(chalk.gray('\n----------------------------------------------\n'));
     }
 }
 main();
