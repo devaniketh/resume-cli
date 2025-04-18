@@ -27,7 +27,6 @@ npx aniketh-resume --full    # Full resume view
 ```
 ### Option 2: Install globally
 
-To install the CLI resume globally on your system and run it like any other command:
 
 ```bash
 npm install -g aniketh-resume
