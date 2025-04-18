@@ -1,4 +1,4 @@
-# Aniketh Deb CLI Resume
+#  CLI Based Resume
 
 Welcome to my interactive **CLI resume**! With this tool, you can easily explore my resume directly from your terminal. 🎉
 
