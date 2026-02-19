@@ -1,15 +1,15 @@
 #  CLI Based Resume
 
-Welcome to my interactive **CLI resume**! With this tool, you can easily explore my resume directly from your terminal. 🎉
+Welcome to my interactive **CLI resume**! With this tool, you can easily explore my resume directly from your terminal. 
 
-## 🚀 Features
+##  Features
 
-- 🎛️ Interactive menu: Choose sections like Education, Experience, Projects, Skills, and Leadership
-- 🧾 Full resume mode: Show everything at once with --full
-- 📱 QR Code support: Instantly scan my portfolio link
-- 🎨 Styled terminal: Chalk, gradient-string, and emoji-powered goodness
+-  Interactive menu: Choose sections like Education, Experience, Projects, Skills, and Leadership
+-  Full resume mode: Show everything at once with --full
+-  QR Code support: Instantly scan my portfolio link
+-  Styled terminal: Chalk, gradient-string, and emoji-powered goodness
 
-## 🛠️ Built With
+##  Built With
 
 - TypeScript
 - Inquirer
@@ -17,7 +17,7 @@ Welcome to my interactive **CLI resume**! With this tool, you can easily explore
 - Gradient-String
 - QRCode-Terminal
 
-## 📦 Installation
+##  Installation
 
 ### Option 1: Use with NPX (no install needed)
 
@@ -44,5 +44,5 @@ npm link
 aniketh-resume
 ```
 
-### 🤝 Contributing
+###  Contributing
 If you'd like to contribute, feel free to fork and open a PR with new features 
